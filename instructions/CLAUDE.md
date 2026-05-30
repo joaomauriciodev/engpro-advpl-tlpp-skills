@@ -98,6 +98,20 @@ Local nVal  as Number            // use Numeric
 Local lOk   as Boolean           // use Logical
 ```
 
+Every function or method **must** follow this order, without exception:
+
+```advpl
+User Function MyFunction()     // 1. header
+    Local  cVar := ""          // 2. Local  variables (all here)
+    Private cPriv := ""        // 3. Private variables (all here)
+    // executable code          // 4. logic
+Return xValue                  // 5. Return
+```
+
+- **All** `Local` declarations come before any executable line of code.
+- **All** `Private` declarations come right after the `Local` ones, still before the code.
+- Never declare `Local` or `Private` in the middle of the flow (inside `If`, `For`, after a function call, etc.).
+
 #### Class & Method Syntax Rules (AdvPL/TLPP)
 
 AdvPL/TLPP has a **two-part** class structure: the **declaration** (inside `class`/`endclass`) and the **implementation** (outside, after `endclass`). The syntax rules differ between these two parts and are unique compared to other languages (Java, C#, TypeScript).
